@@ -7,9 +7,13 @@
 //
 
 import Cocoa
+import Foundation
 
 class StatusViewController: NSViewController, CovidStatusPresenterDelegate {
 
+    @IBOutlet var stackView: NSStackView!
+    @IBOutlet var textLabel: NSTextField!
+    
     private let presenter = CovidStatusPresenter()
     
     override func viewDidLoad() {
@@ -18,10 +22,14 @@ class StatusViewController: NSViewController, CovidStatusPresenterDelegate {
         presenter.setViewDelegate(delegate: self)
         presenter.fetchAllCountries()
         
+        
     }
     
     func updateUI(data: [CovidCountry]?) {
-        print("\(data!.count)")
+        DispatchQueue.main.async {
+            self.textLabel.stringValue = "Total Countries \(data!.count)"
+        }
+        
     }
 
     

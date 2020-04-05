@@ -685,17 +685,17 @@
             <objects>
                 <viewController storyboardIdentifier="StatusViewController" id="XfG-lQ-9wD" customClass="StatusViewController" customModule="COVIDStatus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="293"/>
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="650"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XlX-Fq-ZgR">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="293"/>
+                            <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XlX-Fq-ZgR">
+                                <rect key="frame" x="0.0" y="0.0" width="350" height="650"/>
                                 <clipView key="contentView" id="Pu1-hE-RuO">
-                                    <rect key="frame" x="1" y="1" width="478" height="291"/>
+                                    <rect key="frame" x="1" y="1" width="348" height="648"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <collectionView id="Say-3s-l1F">
-                                            <rect key="frame" x="0.0" y="0.0" width="478" height="158"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="348" height="648"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="duC-Lf-x8j">
                                                 <size key="itemSize" width="50" height="50"/>
@@ -705,7 +705,7 @@
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="9yc-Pg-dLO">
-                                    <rect key="frame" x="1" y="236" width="438" height="16"/>
+                                    <rect key="frame" x="-100" y="-100" width="438" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="xSE-vJ-QvN">
@@ -713,18 +713,54 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <box boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="0cN-35-e7a">
+                                <rect key="frame" x="0.0" y="60" width="350" height="540"/>
+                                <view key="contentView" id="dQg-qx-dwA">
+                                    <rect key="frame" x="1" y="1" width="348" height="538"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Ei-RL-3iF">
+                                            <rect key="frame" x="0.0" y="0.0" width="348" height="538"/>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="7Ei-RL-3iF" firstAttribute="top" secondItem="dQg-qx-dwA" secondAttribute="top" id="JYU-wI-aHY"/>
+                                        <constraint firstAttribute="bottom" secondItem="7Ei-RL-3iF" secondAttribute="bottom" id="Tr0-5j-w6J"/>
+                                        <constraint firstAttribute="trailing" secondItem="7Ei-RL-3iF" secondAttribute="trailing" id="cL9-XE-TfQ"/>
+                                        <constraint firstItem="7Ei-RL-3iF" firstAttribute="leading" secondItem="dQg-qx-dwA" secondAttribute="leading" id="knb-Km-1g1"/>
+                                    </constraints>
+                                </view>
+                                <color key="borderColor" name="quaternaryLabelColor" catalog="System" colorSpace="catalog"/>
+                            </box>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PeK-Gr-IZV">
+                                <rect key="frame" x="116" y="614" width="118" height="16"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label" id="ygh-6X-DxE">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="XlX-Fq-ZgR" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="1FW-SV-n4g"/>
                             <constraint firstAttribute="bottom" secondItem="XlX-Fq-ZgR" secondAttribute="bottom" id="4Uo-tX-E43"/>
+                            <constraint firstAttribute="trailing" secondItem="0cN-35-e7a" secondAttribute="trailing" id="6B7-g8-Vdm"/>
+                            <constraint firstItem="0cN-35-e7a" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="50" id="7wI-Xr-Cjh"/>
                             <constraint firstAttribute="trailing" secondItem="XlX-Fq-ZgR" secondAttribute="trailing" id="Bcp-XR-bfO"/>
+                            <constraint firstAttribute="bottom" secondItem="0cN-35-e7a" secondAttribute="bottom" constant="60" id="CmT-76-rOx"/>
                             <constraint firstItem="XlX-Fq-ZgR" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="DNR-Bi-QLR"/>
+                            <constraint firstItem="0cN-35-e7a" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="ZkP-A2-4XR"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="stackView" destination="7Ei-RL-3iF" id="ZRf-OV-xZx"/>
+                        <outlet property="textLabel" destination="PeK-Gr-IZV" id="ufI-uf-8Fk"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="74" y="239.5"/>
+            <point key="canvasLocation" x="74" y="397"/>
         </scene>
     </scenes>
 </document>
