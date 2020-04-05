@@ -8,16 +8,21 @@
 
 import Cocoa
 
-class StatusViewController: NSViewController {
+class StatusViewController: NSViewController, CovidStatusPresenterDelegate {
 
+    private let presenter = CovidStatusPresenter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        CovidAPI.getAllCountries(path: "countries")
-        
+        presenter.setViewDelegate(delegate: self)
+        presenter.fetchAllCountries()
         
     }
     
+    func updateUI(data: [CovidCountry]?) {
+        print("\(data!.count)")
+    }
 
     
 }
