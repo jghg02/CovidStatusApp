@@ -13,6 +13,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     let popover = NSPopover()
     let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
+    var eventMonitor: EventMonitor?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         if let button = statusItem.button {
@@ -22,6 +23,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         print("🛹"+"❄️")
         
         popover.contentViewController = StatusViewController.freshController()
+        
+        eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown]) { [weak self] event in
+          if let strongSelf = self, strongSelf.popover.isShown {
+            strongSelf.closePopover(sender: event)
+          }
+        }
+        
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -38,11 +46,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func closePopover(sender: Any?) {
         popover.performClose(sender)
+        eventMonitor?.stop()
     }
     
     func showPopover(sender: Any?) {
         if let button = statusItem.button {
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+            eventMonitor?.start()
         }
     }
 
