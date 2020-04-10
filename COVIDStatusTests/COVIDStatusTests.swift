@@ -11,24 +11,49 @@ import XCTest
 
 class COVIDStatusTests: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testInitVC() {
+        let vc = StatusViewController()
+        XCTAssertNotNil(vc)
     }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testViewControllerConformProtocol() {
+        let vc = StatusViewController()
+        XCTAssertNotNil(vc.presenter)
     }
+    
+    func testLoadViewControllerFromStoryBoard() {
+        let story = NSStoryboard(name: "Main", bundle: nil)
+        XCTAssertNotNil(story)
+        
+        let vc = story.instantiateController(withIdentifier: "StatusViewController") as! StatusViewController
+        XCTAssertNotNil(vc)
+        XCTAssertTrue(vc.isMember(of:StatusViewController.self))
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testViewControllerLoadAllUI() {
+        let story = NSStoryboard(name: "Main", bundle: nil)
+        let vc = story.instantiateController(withIdentifier: "StatusViewController") as! StatusViewController
+        
+        XCTAssertNotNil(story)
+        XCTAssertNotNil(vc)
+        
+        vc.loadView()
+        
+        XCTAssertNotNil(vc.textFieldCell)
+        XCTAssertTrue(vc.textFieldCell.title == "COVID-19")
+        XCTAssertNotNil(vc.loading)
+        XCTAssertNotNil(vc.topBox)
+        XCTAssertNotNil(vc.bottomBox)
+        XCTAssertNotNil(vc.label)
+        
+    }
+    
+    func testViewControllerInitPresenter() {
+        let story = NSStoryboard(name: "Main", bundle: nil)
+        let vc = story.instantiateController(withIdentifier: "StatusViewController") as! StatusViewController
+        
+        XCTAssertNotNil(vc.presenter)
     }
 
 }

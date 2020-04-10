@@ -11,30 +11,75 @@ import Foundation
 
 class StatusViewController: NSViewController, CovidStatusPresenterDelegate {
 
-    @IBOutlet var stackView: NSStackView!
-    @IBOutlet var textLabel: NSTextField!
+    var presenter = CovidStatusPresenter()
+    var allCountries: [CovidCountry]? = []
     
-    private let presenter = CovidStatusPresenter()
+    @IBOutlet weak var loading: NSProgressIndicator!{
+        didSet {
+            self.loading.appearance = NSAppearance(named: .darkAqua)
+        }
+    }
+    @IBOutlet weak var topBox: NSBox!
+    @IBOutlet weak var bottomBox: NSBox!
+    @IBOutlet weak var label: NSTextField!
+    @IBOutlet weak var textFieldCell: NSTextFieldCell! {
+        didSet {
+            self.textFieldCell.backgroundColor = .clear
+        }
+    }
+    @IBOutlet weak var collectionView: NSCollectionView! {
+        didSet {
+            self.collectionView.delegate = self
+            self.collectionView.dataSource = self
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        textFieldCell.title = "COVID-19"
+        loading.startAnimation(self)
         presenter.setViewDelegate(delegate: self)
         presenter.fetchAllCountries()
-        
+        presenter.fetchTotalCases()
         
     }
     
     func updateUI(data: [CovidCountry]?) {
         DispatchQueue.main.async {
-            self.textLabel.stringValue = "Total Countries \(data!.count)"
+            self.allCountries = data
+            self.collectionView.reloadData()
+            self.loading.isHidden = true
         }
-        
     }
-
+    
+    func updateHeaderInfo(data: CovidTotal?) {
+        let casesFormater = data?.cases?.formattedWithSeparator
+        DispatchQueue.main.async {
+            self.textFieldCell.title = "Total Cases: \(casesFormater!)"
+        }
+    }
     
 }
 
+
+extension StatusViewController: NSCollectionViewDelegate, NSCollectionViewDataSource {
+    
+    func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.allCountries!.count
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
+        let row = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "RowCell"), for: indexPath)
+        
+        guard let collectionViewItem = row as? RowCell else { return row }
+        collectionViewItem .createRow(country: self.allCountries![indexPath.item])
+        
+        collectionViewItem.view.wantsLayer = true
+        
+        return row
+    }
+}
 
 extension StatusViewController {
   // MARK: Storyboard instantiation
