@@ -21,7 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             button.action = #selector(togglePopover(_:))
         }
         print("🛹"+"❄️")
-        
+        popover.appearance = NSAppearance(named: .darkAqua)
         popover.contentViewController = StatusViewController.freshController()
         
         eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown]) { [weak self] event in

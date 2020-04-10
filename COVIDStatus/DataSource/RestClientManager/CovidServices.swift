@@ -39,4 +39,24 @@ class CovidServices {
         task.resume()
     }
     
+    class public func allCases(path: String = "all", method: RequestMethod = .get, completionHandler: @escaping (CovidTotal?, Error?) -> Void) {
+        let url = URL(string: self.baseURL + path)
+        var request = URLRequest(url: url!)
+        request.httpMethod = method.rawValue
+
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
+            guard let data = data, error == nil else { return }
+            
+            do {
+                //let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! NSArray
+                let json = try JSONDecoder().decode(CovidTotal.self, from: data)
+                completionHandler(json, nil)
+            } catch let error as NSError {
+                completionHandler(nil, error)
+            }
+        })
+        task.resume()
+    }
+    
 }

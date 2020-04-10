@@ -10,11 +10,12 @@ import Cocoa
 
 protocol CovidStatusPresenterDelegate: NSObjectProtocol {
     func updateUI(data: [CovidCountry]?)
+    func updateHeaderInfo(data: CovidTotal?)
 }
 
 class CovidStatusPresenter {
     
-    weak private var delegate: CovidStatusPresenterDelegate?
+    weak var delegate: CovidStatusPresenterDelegate?
     var data: [CovidCountry]? = []
     
     init() {}
@@ -29,5 +30,10 @@ class CovidStatusPresenter {
         }
     }
     
+    func fetchTotalCases() {
+        CovidServices.allCases { (data, error) in
+            self.delegate?.updateHeaderInfo(data: data)
+        }
+    }
 
 }
