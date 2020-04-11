@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CovidCountry: Decodable {
+struct CovidCountry: Codable {
 
     let country: String?
     let countryInfo: CovidCountryInfo?
@@ -24,7 +24,7 @@ struct CovidCountry: Decodable {
 
 }
 
-struct CovidCountryInfo: Decodable {
+struct CovidCountryInfo: Codable {
     let _id: Int?
     let iso2: String?
     let iso3: String?

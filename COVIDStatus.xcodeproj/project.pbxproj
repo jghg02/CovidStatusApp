@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B216092244230E900D089E6 /* CovidAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B216091244230E900D089E6 /* CovidAPI.swift */; };
+		6B216094244231AC00D089E6 /* CovidProtocolAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B216093244231AC00D089E6 /* CovidProtocolAPI.swift */; };
 		6B54D906243D52710045F2FB /* RowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B54D904243D52710045F2FB /* RowCell.swift */; };
 		6B54D907243D52710045F2FB /* RowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B54D905243D52710045F2FB /* RowCell.xib */; };
 		6B8D385924382B2D005A4578 /* CovidServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8D385824382B2D005A4578 /* CovidServices.swift */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6B216091244230E900D089E6 /* CovidAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidAPI.swift; sourceTree = "<group>"; };
+		6B216093244231AC00D089E6 /* CovidProtocolAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidProtocolAPI.swift; sourceTree = "<group>"; };
 		6B54D904243D52710045F2FB /* RowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowCell.swift; sourceTree = "<group>"; };
 		6B54D905243D52710045F2FB /* RowCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RowCell.xib; sourceTree = "<group>"; };
 		6B8D385824382B2D005A4578 /* CovidServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidServices.swift; sourceTree = "<group>"; };
@@ -96,6 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				6BA0B3F9243549DE00F9713F /* RestClientManager */,
+				6B216091244230E900D089E6 /* CovidAPI.swift */,
+				6B216093244231AC00D089E6 /* CovidProtocolAPI.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -293,9 +299,11 @@
 			files = (
 				6BC84C6F24352C3B002DF567 /* StatusViewController.swift in Sources */,
 				6B8D385F243953FC005A4578 /* CovidStatusPresenter.swift in Sources */,
+				6B216094244231AC00D089E6 /* CovidProtocolAPI.swift in Sources */,
 				6BE89922243AB9570047E845 /* CovidUtils.swift in Sources */,
 				6BE130AD2432D62B005C648D /* AppDelegate.swift in Sources */,
 				6BE8991B243A98450047E845 /* CountryCovidCell.swift in Sources */,
+				6B216092244230E900D089E6 /* CovidAPI.swift in Sources */,
 				6BE8991F243AA8F60047E845 /* CovidTotal.swift in Sources */,
 				6BA0B40124354E9C00F9713F /* CovidCountry.swift in Sources */,
 				6B8D386124397038005A4578 /* EventMonitor.swift in Sources */,

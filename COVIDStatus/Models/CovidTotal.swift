@@ -8,7 +8,7 @@
 
 import Cocoa
 
-struct CovidTotal: Decodable {
+struct CovidTotal: Codable {
 
     let cases: Int?
     let todayCases: Int?
