@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Combine
 
 protocol CovidStatusPresenterDelegate: NSObjectProtocol {
     func updateUI(data: [CovidCountry]?)
@@ -35,5 +36,28 @@ class CovidStatusPresenter {
             self.delegate?.updateHeaderInfo(data: data)
         }
     }
+    
+    func fetchWithOutCombineAllCountries() {
+        let provider: CovidAPIProvider! = CovidAPI()
+        provider.fetchDataFromServer {
+            switch $0 {
+            case .failure(_):
+                print("Error...SACUDELO...")
+            case let .success(response):
+                print("XXXXXX \(response)")
+            }
+        }
+    }
+    
+    func fetchWithCombine() {
+        var publisher = [AnyCancellable]()
+        let provider: CovidAPIProvider! = CovidAPI()
+        provider.fetchDataFromServer()
+            .map{ $0.todayCases }
+            .sink(receiveCompletion: { _ in print("ERROR...")}, receiveValue: { print($0 as Any) })
+            .store(in: &publisher)
+        
+    }
+    
 
 }

@@ -42,6 +42,8 @@ class StatusViewController: NSViewController, CovidStatusPresenterDelegate {
         presenter.setViewDelegate(delegate: self)
         presenter.fetchAllCountries()
         presenter.fetchTotalCases()
+        presenter.fetchWithOutCombineAllCountries()
+        presenter.fetchWithCombine()
         
     }
     
