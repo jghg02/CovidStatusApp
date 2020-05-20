@@ -39,11 +39,13 @@ class StatusViewController: NSViewController, CovidStatusPresenterDelegate {
         
         textFieldCell.title = "COVID-19"
         loading.startAnimation(self)
+        
         presenter.setViewDelegate(delegate: self)
         presenter.fetchAllCountries()
         presenter.fetchTotalCases()
-        presenter.fetchWithOutCombineAllCountries()
-        presenter.fetchWithCombine()
+        
+//        presenter.fetchWithOutCombineAllCountries()
+//        presenter.fetchWithCombine()
         
     }
     
@@ -62,6 +64,16 @@ class StatusViewController: NSViewController, CovidStatusPresenterDelegate {
         }
     }
     
+    @IBAction func refreshTap(_ sender: Any) {
+        self.loading.isHidden = false
+        loading.startAnimation(self)
+        textFieldCell.title = "Fetch Data..."
+        self.allCountries?.removeAll()
+        self.collectionView.reloadData()
+        
+        presenter.fetchAllCountries()
+        presenter.fetchTotalCases()
+    }
 }
 
 

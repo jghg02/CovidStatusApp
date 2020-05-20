@@ -1,0 +1,16 @@
+PODS:
+  - Preferences (1.0.1)
+
+DEPENDENCIES:
+  - Preferences
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Preferences
+
+SPEC CHECKSUMS:
+  Preferences: a5afbe0ae3e6bd886328b1960f4998e65d58f2c4
+
+PODFILE CHECKSUM: 0f75c2e523c8089cf15aea15188757531442840b
+
+COCOAPODS: 1.5.3

@@ -27,7 +27,11 @@ class CovidStatusPresenter {
     
     func fetchAllCountries() {
         CovidServices.request(path: "countries") { (data, error) in
-            self.delegate?.updateUI(data: data)
+            // Sort countrys by quantity cases
+            let sortedData = data?.sorted{ (lhs: CovidCountry, rhs: CovidCountry) -> Bool in
+                return lhs.cases > rhs.cases
+            }
+            self.delegate?.updateUI(data: sortedData)
         }
     }
     

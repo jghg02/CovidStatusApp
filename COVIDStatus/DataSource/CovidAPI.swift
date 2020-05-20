@@ -11,7 +11,7 @@ import Combine
 
 class CovidAPI: CovidAPIProvider {
     
-    private let baseURL = "https://corona.lmao.ninja"
+    private let baseURL = "https://corona.lmao.ninja/v2"
     
     private enum EndPoint: String {
         case allCountries = "/all"

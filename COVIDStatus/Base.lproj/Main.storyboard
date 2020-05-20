@@ -730,10 +730,27 @@
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lK0-8x-6n8">
+                                            <rect key="frame" x="327" y="8" width="11" height="31"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="31" id="kV6-Oh-y2J"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="bevel" bezelStyle="circular" image="NSRefreshTemplate" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="MWG-bh-rEm">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="refreshTap:" target="XfG-lQ-9wD" id="H9h-mu-QGe"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="LHw-sl-hIq" firstAttribute="centerY" secondItem="Npe-ii-C6a" secondAttribute="centerY" id="7kn-lQ-pZR"/>
+                                        <constraint firstItem="lK0-8x-6n8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LHw-sl-hIq" secondAttribute="trailing" constant="8" symbolic="YES" id="KPa-dy-nBh"/>
                                         <constraint firstItem="LHw-sl-hIq" firstAttribute="centerX" secondItem="Npe-ii-C6a" secondAttribute="centerX" id="Kbx-9o-IN9"/>
+                                        <constraint firstItem="lK0-8x-6n8" firstAttribute="top" secondItem="Npe-ii-C6a" secondAttribute="top" constant="9" id="Lal-6T-kXF"/>
+                                        <constraint firstAttribute="trailing" secondItem="lK0-8x-6n8" secondAttribute="trailing" constant="20" id="VjJ-GK-45p"/>
+                                        <constraint firstAttribute="bottom" secondItem="lK0-8x-6n8" secondAttribute="bottom" constant="8" id="Zb4-df-6Xh"/>
                                     </constraints>
                                 </view>
                                 <constraints>
@@ -816,4 +833,7 @@
             <point key="canvasLocation" x="74" y="397"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSRefreshTemplate" width="11" height="15"/>
+    </resources>
 </document>

@@ -12,7 +12,7 @@ struct CovidCountry: Codable {
 
     let country: String?
     let countryInfo: CovidCountryInfo?
-    let cases: Int?
+    let cases: Int
     let todayCases: Int?
     let deaths: Int?
     let todayDeaths: Int?
