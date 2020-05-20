@@ -34,7 +34,7 @@ class RowCell: NSCollectionViewItem {
         let imgURL = URL(string: (country?.countryInfo?.flag)!)
         flag.load(url: imgURL!)
         countryName.title = (country?.country)!
-        totalCases.title = "\(country?.todayCases ?? 0)"
+        totalCases.title = country?.cases.formattedWithSeparator ?? "NA"
     }
     
 }

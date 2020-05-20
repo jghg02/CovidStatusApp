@@ -17,7 +17,7 @@ public enum RequestMethod: String {
 
 class CovidServices {
     
-    static let baseURL = "https://corona.lmao.ninja/"
+    static let baseURL = "https://corona.lmao.ninja/v2/"
     
     class public func request(path: String, method: RequestMethod = .get, completionHandler: @escaping ([CovidCountry]?, Error?) -> Void) {
         let url = URL(string: self.baseURL + path)
